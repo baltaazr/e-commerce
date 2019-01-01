@@ -1,0 +1,25 @@
+.SideBarSubItem {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  background-color: white;
+  border-top: 2px solid black;
+}
+
+.SideBarSubItem a {
+  color: green;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  padding: 5px 15px;
+  font: inherit;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.SideBarSubItem a:hover,
+.SideBarSubItem a:active,
+.SideBarSubItem a.active {
+  color: #40a4c8;
+}

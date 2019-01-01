@@ -1,0 +1,28 @@
+.SideBarItem {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  background-color: white;
+  border-bottom: 2px solid black;
+}
+
+.SideBarItem a {
+  color: green;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  padding: 15px;
+  font: inherit;
+  font-weight: bold;
+}
+
+.SideBarItem a:hover,
+.SideBarItem a:active,
+.SideBarItem a.active {
+  color: #40a4c8;
+}
+
+.SideBarItem:last-child {
+  border-bottom: 0;
+}

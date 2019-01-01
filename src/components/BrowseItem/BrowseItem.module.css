@@ -1,0 +1,27 @@
+.BrowseItem {
+  border: 2px solid black;
+  height: 200px;
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.first {
+  margin-left: 0;
+}
+
+.BrowseItem img {
+  padding-top: 5px;
+  height: 60%;
+}
+
+.BrowseItem:hover {
+  border: 2px solid green;
+  cursor: pointer;
+  color: #40a4c8;
+}
+
+.SubCategory {
+  height: 100px;
+}

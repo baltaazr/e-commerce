@@ -1,0 +1,38 @@
+/* Slideshow container */
+.SlideShow {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+
+.SlideShow img {
+  width: 100%;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

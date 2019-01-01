@@ -1,0 +1,35 @@
+.Searchbar {
+  height: 25px;
+}
+
+.Searchbar input[type="text"] {
+  width: 200px;
+  border: black solid 2px;
+  border-left: 0;
+  color: black;
+  background-color: white;
+  outline: none;
+  cursor: text;
+  font: inherit;
+  font-weight: bold;
+  height: 19px;
+  padding-left: 5px;
+}
+
+.Searchbar button {
+  border: black solid 2px;
+  color: black;
+  background-color: white;
+  padding: 2px;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+  height: 100%;
+  float: left;
+}
+
+.Searchbar button:active,
+.Searchbar button:hover {
+  background-color: green;
+}

@@ -1,0 +1,6 @@
+.SideBar {
+  background-color: white;
+  border: 5px solid black;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+}
