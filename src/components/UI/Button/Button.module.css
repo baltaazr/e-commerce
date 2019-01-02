@@ -14,3 +14,20 @@
 .Button:active {
   background-color: green;
 }
+
+.Disabled {
+  border: black solid 2px;
+  color: black;
+  background-color: red;
+  padding: 2px;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+  height: 50px;
+}
+
+.Disabled:hover,
+.Disabled:active {
+  background-color: red;
+}

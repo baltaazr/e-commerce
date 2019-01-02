@@ -6,6 +6,7 @@ import Home from "./containers/Home/Home";
 import Login from "./containers/Login/Login";
 import Browse from "./containers/Browse/Browse";
 import ItemSelected from "./containers/ItemSelected/ItemSelected";
+import Register from "./containers/Register/Register";
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
+            <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/browse" component={Browse} />
             <Route path="/itemSelected" component={ItemSelected} />

@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./Input.css";
+import classes from "./Input.module.css";
 
 const input = props => {
   let inputElement = null;
@@ -44,17 +44,6 @@ const input = props => {
             </option>
           ))}
         </select>
-      );
-      break;
-    case "password":
-      inputElement = (
-        <input
-          className={inputClasses.join(" ")}
-          {...props.elementConfig}
-          value={props.value}
-          onChange={props.changed}
-          type="password"
-        />
       );
       break;
     default:

@@ -6,34 +6,46 @@ import classes from "./Login.module.css";
 import axios from "../../axios";
 import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/Button/Button";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import Notification from "../../components/UI/Notification/Notification";
 
 class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    loading: false,
+    notification: null
   };
 
   loginHandler = event => {
     event.preventDefault();
+    this.setState({ loading: true });
     axios
       .get("/users.json")
       .then(response => {
         for (let userId in response.data) {
           if (response.data[userId]) {
-            if (
-              response.data[userId].email === this.state.email &&
-              response.data[userId].password === this.state.password
-            ) {
-              this.props.history.push({
-                pathname: "/"
-              });
-              return;
+            if (response.data[userId].email === this.state.email) {
+              if (response.data[userId].password === this.state.password) {
+                this.props.history.push({
+                  pathname: "/"
+                });
+                return;
+              }
+              return "La contraseña es incorrecta";
             }
           }
         }
+        return "No pudimos encontrar una cuenta con ese E-Mail";
       })
       .then(response => {
-        console.log("USER NOT FOUND");
+        this.setState({
+          loading: false,
+          notification: {
+            text: response,
+            color: "Red"
+          }
+        });
       });
   };
 
@@ -45,24 +57,54 @@ class Login extends Component {
     this.setState({ password: event.target.value });
   }
 
+  registerButtonHandler = () => {
+    this.props.history.push({
+      pathname: "/register"
+    });
+  };
+
+  cancelNotificationHandler = () => {
+    this.setState({ notification: null });
+  };
+
   render() {
+    let form = (
+      <form onSubmit={this.loginHandler}>
+        <Input
+          changed={event => this.emailChangedHandler(event)}
+          label="E-Mail"
+        />
+        <Input
+          changed={event => this.passwordChangedHandler(event)}
+          elementConfig={{ type: "password" }}
+          label="Contraseña"
+        />
+        <Button>Iniciar Sesion</Button>
+      </form>
+    );
+    if (this.state.loading) {
+      form = <Spinner />;
+    }
+    let notification = null;
+    if (this.state.notification) {
+      notification = (
+        <Notification
+          color={this.state.notification.color}
+          cancel={this.cancelNotificationHandler}
+        >
+          {this.state.notification.text}
+        </Notification>
+      );
+    }
     return (
       <React.Fragment>
+        {notification}
         <div className="col span_1_of_3" />
         <div className="col span_1_of_3">
           <div className={classes.Login}>
-            <form onSubmit={this.loginHandler}>
-              <h1>INICIAR SESION</h1>
-              <p>Email:</p>
-              <Input changed={event => this.emailChangedHandler(event)} />
-              <p>Contraseña:</p>
-              <Input
-                changed={event => this.passwordChangedHandler(event)}
-                elementType="password"
-              />
-              <Button>Iniciar Sesion</Button>
-            </form>
-            <Button>Registrarte</Button>
+            <h1>INICIAR SESION</h1>
+            {form}
+            <Button clicked={this.registerButtonHandler}>Registrarte</Button>
           </div>
         </div>
       </React.Fragment>
