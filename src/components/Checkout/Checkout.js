@@ -8,9 +8,11 @@ const Checkout = props => {
   return (
     <div className={classes.Checkout}>
       <h1>${props.price}</h1>
-      <Button>
-        <FaCartPlus /> Agregar al Carrito
-      </Button>
+      {props.button ? (
+        <Button>
+          <FaCartPlus /> Agregar al Carrito
+        </Button>
+      ) : null}
     </div>
   );
 };

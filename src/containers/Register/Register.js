@@ -9,7 +9,7 @@ import Button from "../../components/UI/Button/Button";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Notification from "../../components/UI/Notification/Notification";
 
-export default class Register extends Component {
+class Register extends Component {
   state = {
     registerForm: {
       name: {
@@ -246,3 +246,5 @@ export default class Register extends Component {
     );
   }
 }
+
+export default Register;

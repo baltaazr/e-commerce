@@ -11,6 +11,8 @@
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 90;
+  color: #40a4c8;
+  font-weight: bolder;
 }
 
 .Toolbar nav {
@@ -19,6 +21,7 @@
 
 .Logo {
   height: 80%;
+  cursor: pointer;
 }
 
 @media (max-width: 480px) {

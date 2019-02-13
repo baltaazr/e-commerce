@@ -1,0 +1,27 @@
+.NavigationSubItem {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  background-color: white;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.NavigationSubItem a {
+  color: green;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  padding: 5px 15px;
+  font: inherit;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.NavigationSubItem a:hover,
+.NavigationSubItem a:active,
+.NavigationSubItem a.active {
+  color: #40a4c8;
+}

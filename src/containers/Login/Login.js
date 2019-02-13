@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
 
 import "../../grids/3cols.css";
 import "../../grids/col.css";
@@ -27,10 +29,13 @@ class Login extends Component {
           if (response.data[userId]) {
             if (response.data[userId].email === this.state.email) {
               if (response.data[userId].password === this.state.password) {
-                this.props.history.push({
-                  pathname: "/"
+                this.props.loginReduxHandler({
+                  id: userId,
+                  name: response.data[userId].name,
+                  email: response.data[userId].email,
+                  cart: response.data[userId].cart
                 });
-                return;
+                return null;
               }
               return "La contraseña es incorrecta";
             }
@@ -39,13 +44,19 @@ class Login extends Component {
         return "No pudimos encontrar una cuenta con ese E-Mail";
       })
       .then(response => {
-        this.setState({
-          loading: false,
-          notification: {
-            text: response,
-            color: "Red"
-          }
-        });
+        if (response) {
+          this.setState({
+            loading: false,
+            notification: {
+              text: response,
+              color: "Red"
+            }
+          });
+        } else {
+          this.props.history.push({
+            pathname: "/"
+          });
+        }
       });
   };
 
@@ -112,4 +123,14 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => {
+  return {
+    loginReduxHandler: user =>
+      dispatch({ type: actionTypes.LOGIN, payload: { user } })
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Login);

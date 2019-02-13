@@ -7,6 +7,7 @@ import Login from "./containers/Login/Login";
 import Browse from "./containers/Browse/Browse";
 import ItemSelected from "./containers/ItemSelected/ItemSelected";
 import Register from "./containers/Register/Register";
+import Cart from "./containers/Cart/Cart";
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
+            <Route path="/cart" component={Cart} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/browse" component={Browse} />

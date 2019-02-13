@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
 
 import classes from "./ItemSelected.module.css";
 import "../../grids/3cols.css";
@@ -65,7 +67,10 @@ class ItemSelected extends Component {
             <p>{this.state.data.description}</p>
           </div>
           <div className={"col span_1_of_3"}>
-            <Checkout price={this.state.data.price} />
+            <Checkout
+              price={this.state.data.price}
+              button={this.props.userName}
+            />
           </div>
         </div>
       );
@@ -73,5 +78,8 @@ class ItemSelected extends Component {
     return item;
   }
 }
+const mapStateToProps = state => {
+  return { userName: state.user.name };
+};
 
-export default ItemSelected;
+export default connect(mapStateToProps)(ItemSelected);
