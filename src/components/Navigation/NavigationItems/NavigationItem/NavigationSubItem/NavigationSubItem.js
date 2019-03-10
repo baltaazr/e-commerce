@@ -5,9 +5,7 @@ import classes from "./NavigationSubItem.module.css";
 
 const navigationSubItem = props => (
   <div className={classes.NavigationSubItem}>
-    <NavLink to={props.link ? props.link : "/"} onClick={props.clicked}>
-      {props.children}
-    </NavLink>
+    <NavLink to={props.link}>{props.children}</NavLink>
   </div>
 );
 

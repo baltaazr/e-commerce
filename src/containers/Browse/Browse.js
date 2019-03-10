@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import bigChungus from "../../assets/images/chungus.jpg";
 import "../../grids/3cols.css";
 import "../../grids/col.css";
 import SideBar from "../../components/SideBar/SideBar";
@@ -48,7 +49,7 @@ class Browser extends Component {
         <BrowseItem
           name={item.name}
           price={item.price}
-          image={require("./" + item.imagePath)}
+          image={bigChungus}
           key={item.id}
           noLeftMargin={itemIndex % 3 === 0}
           clicked={() => this.itemSelectHandler(item.id)}

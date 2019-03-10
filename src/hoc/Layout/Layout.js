@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
+import Notification from "../../components/UI/Notification/Notification";
+import * as actions from "../../store/actions/index";
 
 class Layout extends Component {
   state = {
@@ -19,11 +23,35 @@ class Layout extends Component {
     });
   };
 
+  logoClickHandler = () => {
+    this.props.history.push("/");
+  };
+
   render() {
+    let notification = null;
+    if (this.props.notification) {
+      notification = (
+        <Notification
+          color={this.props.notification.color}
+          cancel={() => {
+            this.props.changeNotification(null);
+          }}
+        >
+          {this.props.notification.message}
+        </Notification>
+      );
+    }
+
     return (
       <React.Fragment>
-        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+        {notification}
+        <Toolbar
+          isAuth={this.props.isAuth}
+          drawerToggleClicked={this.sideDrawerToggleHandler}
+          onLogoClick={this.logoClickHandler}
+        />
         <SideDrawer
+          isAuth={this.props.isAuth}
           open={this.state.showSideDrawer}
           closed={this.sideDrawerClosedHandler}
         />
@@ -33,4 +61,23 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.user,
+    notification: state.auth.notification
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeNotification: notification =>
+      dispatch(actions.changeNotification(notification))
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Layout)
+);

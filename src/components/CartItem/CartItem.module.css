@@ -1,0 +1,14 @@
+.CartItem {
+  border: 2px solid black;
+  height: 50px;
+  display: block;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.CartItem button {
+  display: block;
+  float: right;
+  margin: 2px;
+  height: 30px;
+}
