@@ -100,30 +100,29 @@ class Cart extends Component {
       ));
     }
 
-    if (this)
-      if (this.props.cart.length > 0) {
-        return (
-          <React.Fragment>
-            <div className="col span_2_of_3">
-              <h1>Carrito</h1>
-              {cartItems}
-            </div>
-            <div className="col span_1_of_3">
-              <Box>
-                <h1>Precio Total: ${this.getTotalPrice()}</h1>
-                <Button>Proceder al pago</Button>
-              </Box>
-            </div>
-          </React.Fragment>
-        );
-      } else {
-        return (
+    if (this.props.cart && this.props.cart.length > 0) {
+      return (
+        <React.Fragment>
           <div className="col span_2_of_3">
             <h1>Carrito</h1>
-            <h4>Tu carrito de compras está vacío.</h4>
+            {cartItems}
           </div>
-        );
-      }
+          <div className="col span_1_of_3">
+            <Box>
+              <h1>Precio Total: ${this.getTotalPrice()}</h1>
+              <Button>Proceder al pago</Button>
+            </Box>
+          </div>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <div className="col span_2_of_3">
+          <h1>Carrito</h1>
+          <h4>Tu carrito de compras está vacío.</h4>
+        </div>
+      );
+    }
   }
 }
 
