@@ -99,7 +99,6 @@ export const auth = (email, password, isSignup, name) => {
           axiosRealtimeDatabase
             .get(url)
             .then(r => {
-              console.log(r.data);
               let user = r.data;
               const expirationDate = new Date(
                 new Date().getTime() + response.data.expiresIn * 1000
