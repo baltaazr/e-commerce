@@ -73,7 +73,7 @@ export const auth = (email, password, isSignup, name) => {
           let user = { name: name, email: email, cart: [] };
           axiosRealtimeDatabase
             .put(url, user)
-            .then(r => {
+            .then(res => {
               const expirationDate = new Date(
                 new Date().getTime() + response.data.expiresIn * 1000
               );
@@ -98,8 +98,8 @@ export const auth = (email, password, isSignup, name) => {
           let url = "/users/" + response.data.localId + ".json";
           axiosRealtimeDatabase
             .get(url)
-            .then(r => {
-              let user = r.data;
+            .then(res => {
+              let user = res.data;
               const expirationDate = new Date(
                 new Date().getTime() + response.data.expiresIn * 1000
               );

@@ -11,7 +11,7 @@ const navigationItems = props => (
         <NavigationItem
           subItems={[
             // { label: "Tu Cuenta", link: "/user-account" },
-            { label: "Tus Pedidos", link: "/order-history" },
+            { label: "Tus Pedidos", link: "/orders" },
             { label: "Cerrar Sesión", link: "/logout" }
           ]}
           link="/user-account"

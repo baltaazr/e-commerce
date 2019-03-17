@@ -21,6 +21,7 @@ class Orders extends Component {
           price={order.price}
           address={order.address}
           paymentMethod={order.paymentMethod}
+          date={order.date}
         />
       ));
     }

@@ -19,10 +19,34 @@ const order = props => {
       </span>
     );
   });
+  var monthNames = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+  ];
+
+  let dateObject = new Date(props.date);
+
+  let date =
+    dateObject.getDate() +
+    " " +
+    monthNames[dateObject.getMonth()] +
+    " " +
+    dateObject.getFullYear();
 
   return (
     <div className={classes.Order}>
       <p>Artículos: {itemsOutput}</p>
+      <p>Fecha de compra: {date}</p>
       <p>Dirección: {props.address}</p>
       <p>Método de pago: {props.paymentMethod}</p>
       <p>
