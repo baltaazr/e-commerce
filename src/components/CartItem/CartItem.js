@@ -13,13 +13,17 @@ const cartItem = props => {
         props.item.quantity +
         ", Precio: " +
         props.item.price}
-      <Button clicked={props.remove}>Remover</Button>
-      <Button clicked={props.add}>
-        <FaPlus />
-      </Button>
-      <Button clicked={props.subtract}>
-        <FaMinus />
-      </Button>
+      {props.remove ? <Button clicked={props.remove}>Remover</Button> : null}
+      {props.add ? (
+        <Button clicked={props.add}>
+          <FaPlus />
+        </Button>
+      ) : null}
+      {props.subtract ? (
+        <Button clicked={props.subtract}>
+          <FaMinus />
+        </Button>
+      ) : null}
     </div>
   );
 };

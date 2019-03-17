@@ -8,9 +8,11 @@ import thunk from "redux-thunk";
 import "./index.css";
 import App from "./App";
 import authReducer from "./store/reducers/auth";
+import orderReducer from "./store/reducers/order";
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  order: orderReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

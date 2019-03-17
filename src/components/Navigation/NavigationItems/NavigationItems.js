@@ -10,7 +10,7 @@ const navigationItems = props => (
       <React.Fragment>
         <NavigationItem
           subItems={[
-            { label: "Tu Cuenta", link: "/user-account" },
+            // { label: "Tu Cuenta", link: "/user-account" },
             { label: "Tus Pedidos", link: "/order-history" },
             { label: "Cerrar Sesión", link: "/logout" }
           ]}
@@ -18,7 +18,7 @@ const navigationItems = props => (
         >
           {"Hola " + props.isAuth.name}
         </NavigationItem>
-        <NavigationItem link="order-history">Pedidos</NavigationItem>
+        <NavigationItem link="orders">Pedidos</NavigationItem>
         <NavigationItem link="cart" big>
           <FaShoppingCart />
         </NavigationItem>

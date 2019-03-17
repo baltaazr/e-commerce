@@ -109,8 +109,14 @@ class Cart extends Component {
           </div>
           <div className="col span_1_of_3">
             <Box>
-              <h1>Precio Total: ${this.getTotalPrice()}</h1>
-              <Button>Proceder al pago</Button>
+              <h1>Subtotal: ${this.getTotalPrice()}</h1>
+              <Button
+                clicked={() => {
+                  this.props.history.push("/checkout");
+                }}
+              >
+                Proceder al pago
+              </Button>
             </Box>
           </div>
         </React.Fragment>

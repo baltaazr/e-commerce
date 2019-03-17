@@ -1,3 +1,4 @@
+export { placeOrder, fetchOrders } from "./order";
 export {
   auth,
   logout,
