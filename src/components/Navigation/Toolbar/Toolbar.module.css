@@ -1,5 +1,5 @@
 .Toolbar {
-  height: 56px;
+  height: 100px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -27,5 +27,8 @@
 @media (max-width: 480px) {
   .DesktopOnly {
     display: none;
+  }
+  .Toolbar{
+    height:56px
   }
 }

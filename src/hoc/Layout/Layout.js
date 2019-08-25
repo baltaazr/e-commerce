@@ -10,7 +10,8 @@ import * as actions from "../../store/actions/index";
 
 class Layout extends Component {
   state = {
-    showSideDrawer: false
+    showSideDrawer: false,
+    searchbarValue: ""
   };
 
   sideDrawerClosedHandler = () => {
@@ -26,6 +27,17 @@ class Layout extends Component {
   logoClickHandler = () => {
     this.props.history.push("/");
   };
+
+  searchbarClickedHandler() {
+    this.props.history.push({
+      pathname: "/browse",
+      search: "?advSearch=" + this.state.searchbarValue
+    });
+  }
+
+  searchbarChangedHandler(event) {
+    this.setState({ searchbarValue: event.target.value });
+  }
 
   render() {
     let notification = null;
@@ -49,6 +61,8 @@ class Layout extends Component {
           isAuth={this.props.isAuth}
           drawerToggleClicked={this.sideDrawerToggleHandler}
           onLogoClick={this.logoClickHandler}
+          searchbarClicked={() => this.searchbarClickedHandler()}
+          searchbarChanged={event => this.searchbarChangedHandler(event)}
         />
         <SideDrawer
           isAuth={this.props.isAuth}

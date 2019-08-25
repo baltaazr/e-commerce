@@ -1,30 +1,16 @@
 import React, { Component } from "react";
 
-import bigChungus from "../../assets/images/chungus.jpg";
 import "../../grids/3cols.css";
 import "../../grids/col.css";
 import SideBar from "../../components/SideBar/SideBar";
-import Searchbar from "../../components/Searchbar/Searchbar";
 import BrowseItem from "../../components/BrowseItem/BrowseItem";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import axios from "../../axios";
 
 class Browser extends Component {
   state = {
-    data: null,
-    searchbarValue: ""
+    data: null
   };
-
-  searchbarChangedHandler(event) {
-    this.setState({ searchbarValue: event.target.value });
-  }
-
-  searchbarClickedHandler() {
-    this.props.history.push({
-      pathname: "/browse",
-      search: "?advSearch=" + this.state.searchbarValue
-    });
-  }
 
   componentDidMount() {
     axios.get("/category.json").then(response => {
@@ -49,7 +35,7 @@ class Browser extends Component {
         <BrowseItem
           name={item.name}
           price={item.price}
-          image={bigChungus}
+          image={item.imagePath}
           key={item.id}
           noLeftMargin={itemIndex % 3 === 0}
           clicked={() => this.itemSelectHandler(item.id)}
@@ -120,7 +106,7 @@ class Browser extends Component {
             .toUpperCase()
             .includes(newParams[0][1].toUpperCase());
         });
-        browseItems = this.mapItemArray(itemArray, newParams);
+        browseItems = this.mapItemArray(itemArray);
         if (browseItems.length === 0) {
           browseItems = (
             <h1>
@@ -173,7 +159,7 @@ class Browser extends Component {
             }
           }
         }
-        browseItems = this.mapItemArray(itemArray, newParams);
+        browseItems = this.mapItemArray(itemArray);
       } else if (!this.state.data[newParams[0][1]][0]) {
         let subCategoryArray = [];
         for (let subCategoryId in this.state.data[newParams[0][1]]) {
@@ -205,13 +191,7 @@ class Browser extends Component {
         <div className="col span_1_of_3">
           <SideBar />
         </div>
-        <div className="col span_2_of_3">
-          <Searchbar
-            clicked={() => this.searchbarClickedHandler()}
-            changed={event => this.searchbarChangedHandler(event)}
-          />
-          {browseItems}
-        </div>
+        <div className="col span_2_of_3">{browseItems}</div>
       </div>
     );
   }

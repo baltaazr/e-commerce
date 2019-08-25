@@ -1,0 +1,13 @@
+.Home {
+  display: block;
+  float: left;
+  margin: 1% 0 1% 0%;
+  width: 32.26%;
+}
+
+@media only screen and (max-width: 480px) {
+  .Home {
+    margin: 1% 0 1% 0%;
+    width: 100%;
+  }
+}

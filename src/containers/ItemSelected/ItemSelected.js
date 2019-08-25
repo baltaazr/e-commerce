@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import bigChungus from "../../assets/images/chungus.jpg";
 import classes from "./ItemSelected.module.css";
 import "../../grids/3cols.css";
 import "../../grids/col.css";
@@ -56,7 +55,7 @@ class ItemSelected extends Component {
       item = (
         <div className={classes.ItemSelected}>
           <div className={"col span_1_of_3"}>
-            <img src={bigChungus} alt="IMAGEN DEL PRODUCTO" />
+            <img src={this.state.data.imagePath} alt="IMAGEN DEL PRODUCTO" />
           </div>
           <div className={"col span_1_of_3"}>
             <h1>{this.state.data.name}</h1>
@@ -66,19 +65,19 @@ class ItemSelected extends Component {
             {this.props.loading ? (
               <Spinner />
             ) : (
-              <Box>
-                <h1>${this.state.data.price}</h1>
-                {this.props.isAuth ? (
-                  <Button
-                    clicked={() => {
-                      this.props.addCartItem(this.state.id);
-                    }}
-                  >
-                    <FaCartPlus /> Agregar al Carrito
+                <Box>
+                  <h1>${this.state.data.price}</h1>
+                  {this.props.isAuth ? (
+                    <Button
+                      clicked={() => {
+                        this.props.addCartItem(this.state.id);
+                      }}
+                    >
+                      <FaCartPlus /> Agregar al Carrito
                   </Button>
-                ) : null}
-              </Box>
-            )}
+                  ) : null}
+                </Box>
+              )}
           </div>
         </div>
       );

@@ -1,6 +1,6 @@
 .Container {
   position: absolute;
-  top: 56px;
+  top: 100px;
 }
 
 .Big {
@@ -50,7 +50,7 @@
   .NavigationItem p {
     color: white;
     height: 100%;
-    padding: 16px 10px;
+    padding: 40px 10px;
     border-bottom: 4px solid transparent;
   }
 
