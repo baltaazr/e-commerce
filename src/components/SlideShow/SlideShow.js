@@ -1,44 +1,47 @@
 import React, { Component } from "react";
 
-import slideShow1 from "../../assets/images/slideshow1.jpg";
-import slideShow2 from "../../assets/images/slideshow2.jpg";
-import slideShow3 from "../../assets/images/slideshow3.png";
 import classes from "./SlideShow.module.css";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import axios from "../../axios";
 
 class SlideShow extends Component {
-  state = { slideNumber: 1 };
+  state = { slideNumber: 0, slides: null };
+
+  componentDidMount() {
+    axios.get("/slideshow.json").then(response => {
+      this.setState({ slides: response.data });
+    });
+  }
+
   nextSlideHandler = () => {
     this.setState(prevState => {
-      if (prevState.slideNumber === 3) {
-        return { slideNumber: 1 };
+      if (prevState.slideNumber === this.state.slides.length - 1) {
+        return { slideNumber: 0 };
       }
       return { slideNumber: prevState.slideNumber + 1 };
     });
   };
   prevSlideHandler = () => {
     this.setState(prevState => {
-      if (prevState.slideNumber === 1) {
-        return { slideNumber: 3 };
+      if (prevState.slideNumber === 0) {
+        return { slideNumber: this.state.slides.length - 1 };
       }
       return { slideNumber: prevState.slideNumber - 1 };
     });
   };
   render() {
+    let img = <Spinner />;
+    if (this.state.slides) {
+      img = (
+        <img src={this.state.slides[this.state.slideNumber]} alt="IMAGEN" />
+      );
+    }
     return (
       <React.Fragment>
         <div className={classes.SlideShow}>
-          <img
-            src={
-              this.state.slideNumber === 1
-                ? slideShow1
-                : this.state.slideNumber === 2
-                ? slideShow2
-                : slideShow3
-            }
-            alt="IMAGEN"
-          />
+          {img}
           <p className={classes.prev} onClick={this.prevSlideHandler}>
             <FaAngleLeft />
           </p>
