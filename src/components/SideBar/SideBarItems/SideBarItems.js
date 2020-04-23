@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import classes from "./SideBarItems.module.css";
 import SideBarItem from "./SideBarItem/SideBarItem";
 import axios from "../../../axios";
-import Spinner from "../../UI/Spinner/Spinner";
 
 class SideBarItems extends Component {
   state = {
@@ -17,7 +16,7 @@ class SideBarItems extends Component {
   }
 
   render() {
-    let sideBarItems = <Spinner />;
+    let sideBarItems;
     if (this.state.data) {
       sideBarItems = [];
       for (let categoryId in this.state.data) {

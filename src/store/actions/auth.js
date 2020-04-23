@@ -186,7 +186,7 @@ export const addCartItem = cartItemId => {
         dispatch(changeUser(newUser));
         dispatch(
           changeNotification({
-            message: "Artículo añadido a su carrito",
+            message: "Item added to your cart",
             color: "Blue"
           })
         );

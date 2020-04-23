@@ -4,7 +4,6 @@ import "../../grids/3cols.css";
 import "../../grids/col.css";
 import SideBar from "../../components/SideBar/SideBar";
 import BrowseItem from "../../components/BrowseItem/BrowseItem";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import axios from "../../axios";
 
 class Browser extends Component {
@@ -50,7 +49,7 @@ class Browser extends Component {
     for (let param of query.entries()) {
       newParams.push(param);
     }
-    let browseItems = <Spinner />;
+    let browseItems;
     if (this.state.data) {
       if (newParams[0][0] === "advSearch") {
         let itemArray = [];

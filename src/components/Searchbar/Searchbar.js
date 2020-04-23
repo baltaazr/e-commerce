@@ -12,7 +12,12 @@ const searchbar = props => {
       <input
         type="text"
         name="search"
-        placeholder="Buscar..."
+        placeholder="Search..."
+        onKeyPress={event => {
+          if (event.key === "Enter") {
+            props.clicked();
+          }
+        }}
         onChange={props.changed}
       />
     </div>

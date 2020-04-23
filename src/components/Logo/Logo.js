@@ -6,9 +6,9 @@ const logo = props => (
   <div className={classes.Logo} style={{ height: props.height }}>
     <img
       src={
-        "https://firebasestorage.googleapis.com/v0/b/grupo-jorani.appspot.com/o/logo.jpg?alt=media&token=9afbf19e-7536-45a6-81fe-ad7e9afa1b73"
+        "https://firebasestorage.googleapis.com/v0/b/grupo-jorani.appspot.com/o/ACF-logo-placeholder.png?alt=media&token=1fd9fcba-9199-4caf-b646-29ff3ae131e3"
       }
-      alt="GRUPO JORANI"
+      alt="LOGO PLACEHOLDER"
     />
   </div>
 );
