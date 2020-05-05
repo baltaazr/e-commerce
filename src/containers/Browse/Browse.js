@@ -8,27 +8,27 @@ import axios from "../../axios";
 
 class Browser extends Component {
   state = {
-    data: null
+    data: null,
   };
 
   componentDidMount() {
-    axios.get("/category.json").then(response => {
+    axios.get("/category.json").then((response) => {
       this.setState({ data: response.data });
     });
   }
 
-  itemSelectHandler = id => {
+  itemSelectHandler = (id) => {
     this.props.history.push({ pathname: "/itemSelected", search: "?id=" + id });
   };
 
   subCategorySelectHandler = (secId, subSecId) => {
     this.props.history.push({
       pathname: "/browse",
-      search: "?secId=" + secId + "&subSecId=" + subSecId
+      search: "?secId=" + secId + "&subSecId=" + subSecId,
     });
   };
 
-  mapItemArray = itemArray => {
+  mapItemArray = (itemArray) => {
     return itemArray.map((item, itemIndex) => {
       return (
         <BrowseItem
@@ -78,7 +78,7 @@ class Browser extends Component {
                   ]) {
                     if (productIndex !== "name") {
                       let item = {
-                        ...this.state.data[category][subCategory][productIndex]
+                        ...this.state.data[category][subCategory][productIndex],
                       };
                       item.id =
                         (category + "").length === 1
@@ -100,7 +100,7 @@ class Browser extends Component {
             }
           }
         }
-        itemArray = itemArray.filter(item => {
+        itemArray = itemArray.filter((item) => {
           return item.name
             .toUpperCase()
             .includes(newParams[0][1].toUpperCase());
@@ -109,7 +109,7 @@ class Browser extends Component {
         if (browseItems.length === 0) {
           browseItems = (
             <h1>
-              La búsqueda de "{newParams[0][1]}" no obtuvo ningún resultado.
+              The advanced search "{newParams[0][1]}" retrieved no results
             </h1>
           );
         }
@@ -123,7 +123,7 @@ class Browser extends Component {
               let item = {
                 ...this.state.data[newParams[0][1]][newParams[1][1]][
                   productIndex
-                ]
+                ],
               };
               item.id =
                 (newParams[0][1] + "").length === 1
@@ -144,7 +144,7 @@ class Browser extends Component {
           for (let productIndex in this.state.data[newParams[0][1]]) {
             if (productIndex !== "name") {
               let item = {
-                ...this.state.data[newParams[0][1]][productIndex]
+                ...this.state.data[newParams[0][1]][productIndex],
               };
               item.id =
                 (newParams[0][1] + "").length === 1
@@ -164,7 +164,7 @@ class Browser extends Component {
         for (let subCategoryId in this.state.data[newParams[0][1]]) {
           if (subCategoryId !== "name") {
             let subCategory = {
-              ...this.state.data[newParams[0][1]][subCategoryId]
+              ...this.state.data[newParams[0][1]][subCategoryId],
             };
             subCategory.id = subCategoryId;
             subCategoryArray.push(subCategory);
