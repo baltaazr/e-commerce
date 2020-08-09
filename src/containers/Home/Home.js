@@ -6,7 +6,6 @@ import "../../grids/col.css";
 import SideBar from "../../components/SideBar/SideBar";
 import SlideShow from "../../components/SlideShow/SlideShow";
 import BrowseItem from "../../components/BrowseItem/BrowseItem";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import axios from "../../axios";
 
 class Home extends Component {
@@ -54,7 +53,7 @@ class Home extends Component {
   };
 
   render() {
-    let showcaseItems = <Spinner />;
+    let showcaseItems;
     if (this.state.data.length > 0) {
       showcaseItems = this.mapItemArray(this.state.data);
     }

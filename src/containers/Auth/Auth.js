@@ -14,7 +14,7 @@ class Auth extends Component {
         elementType: "input",
         elementConfig: {
           type: "email",
-          placeholder: "Correo electrónico"
+          placeholder: "Email"
         },
         value: "",
         validation: {
@@ -28,7 +28,7 @@ class Auth extends Component {
         elementType: "input",
         elementConfig: {
           type: "password",
-          placeholder: "Contraseña"
+          placeholder: "Password"
         },
         value: "",
         validation: {
@@ -114,7 +114,7 @@ class Auth extends Component {
             elementType: "input",
             elementConfig: {
               type: "email",
-              placeholder: "Correo electrónico"
+              placeholder: "Email"
             },
             value: "",
             validation: {
@@ -128,7 +128,7 @@ class Auth extends Component {
             elementType: "input",
             elementConfig: {
               type: "password",
-              placeholder: "Contraseña"
+              placeholder: "Password"
             },
             value: "",
             validation: {
@@ -145,7 +145,7 @@ class Auth extends Component {
             elementType: "input",
             elementConfig: {
               type: "text",
-              placeholder: "Nombre completo"
+              placeholder: "Full name"
             },
             value: "",
             validation: {
@@ -158,7 +158,7 @@ class Auth extends Component {
             elementType: "input",
             elementConfig: {
               type: "email",
-              placeholder: "Correo electrónico"
+              placeholder: "Email"
             },
             value: "",
             validation: {
@@ -172,7 +172,7 @@ class Auth extends Component {
             elementType: "input",
             elementConfig: {
               type: "password",
-              placeholder: "Contraseña"
+              placeholder: "Password"
             },
             value: "",
             validation: {
@@ -186,7 +186,7 @@ class Auth extends Component {
             elementType: "input",
             elementConfig: {
               type: "password",
-              placeholder: "Confirmar contraseña"
+              placeholder: "Confirm Password"
             },
             value: "",
             validation: {
@@ -233,15 +233,14 @@ class Auth extends Component {
       <React.Fragment>
         <div className="col span_1_of_3" />
         <div className="col span_1_of_3">
-          <h1>{this.state.isSignup ? "CREAR CUENTA" : "INICIAR SESIÓN"}</h1>
+          <h1>{this.state.isSignup ? "CREATE ACCOUNT" : "LOG IN"}</h1>
           <div className={classes.Auth}>
             <form onSubmit={this.submitHandler}>
               {form}
-              <Button btnType="Success">Enviar</Button>
+              <Button btnType="Success">Send</Button>
             </form>
             <Button clicked={this.switchAuthModeHandler}>
-              Cambiar para{" "}
-              {this.state.isSignup ? "iniciar sesión" : "registrarse"}
+              Change to {this.state.isSignup ? "log in" : "register"}
             </Button>
           </div>
         </div>
@@ -264,7 +263,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

@@ -24,8 +24,8 @@ class App extends Component {
         <Route path="/auth" component={Auth} />
         <Route path="/browse" component={Browse} />
         <Route path="/itemSelected" component={ItemSelected} />
-        <Route path="/" exact component={Home} />
-        <Redirect to="/" />
+        <Route path="/e-commerce" exact component={Home} />
+        <Redirect to="/e-commerce" />
       </Switch>
     );
 
@@ -38,8 +38,8 @@ class App extends Component {
           <Route path="/orders" component={Orders} />
           <Route path="/browse" component={Browse} />
           <Route path="/itemSelected" component={ItemSelected} />
-          <Route path="/" exact component={Home} />
-          <Redirect to="/" />
+          <Route path="/e-commerce" exact component={Home} />
+          <Redirect to="/e-commerce" />
         </Switch>
       );
     }
@@ -51,21 +51,16 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuth: state.auth.token !== null
+    isAuth: state.auth.token !== null,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onTryAutoSignup: () => dispatch(actions.authCheckState())
+    onTryAutoSignup: () => dispatch(actions.authCheckState()),
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

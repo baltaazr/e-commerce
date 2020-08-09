@@ -11,7 +11,7 @@ import * as actions from "../../store/actions/index";
 class Layout extends Component {
   state = {
     showSideDrawer: false,
-    searchbarValue: ""
+    searchbarValue: "",
   };
 
   sideDrawerClosedHandler = () => {
@@ -19,19 +19,19 @@ class Layout extends Component {
   };
 
   sideDrawerToggleHandler = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return { showSideDrawer: !prevState.showSideDrawer };
     });
   };
 
   logoClickHandler = () => {
-    this.props.history.push("/");
+    this.props.history.push("/e-commerce");
   };
 
   searchbarClickedHandler() {
     this.props.history.push({
       pathname: "/browse",
-      search: "?advSearch=" + this.state.searchbarValue
+      search: "?advSearch=" + this.state.searchbarValue,
     });
   }
 
@@ -62,7 +62,7 @@ class Layout extends Component {
           drawerToggleClicked={this.sideDrawerToggleHandler}
           onLogoClick={this.logoClickHandler}
           searchbarClicked={() => this.searchbarClickedHandler()}
-          searchbarChanged={event => this.searchbarChangedHandler(event)}
+          searchbarChanged={(event) => this.searchbarChangedHandler(event)}
         />
         <SideDrawer
           isAuth={this.props.isAuth}
@@ -75,23 +75,18 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     isAuth: state.auth.user,
-    notification: state.auth.notification
+    notification: state.auth.notification,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    changeNotification: notification =>
-      dispatch(actions.changeNotification(notification))
+    changeNotification: (notification) =>
+      dispatch(actions.changeNotification(notification)),
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Layout)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout));

@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import classes from "./SlideShow.module.css";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import axios from "../../axios";
 
 class SlideShow extends Component {
@@ -32,7 +31,7 @@ class SlideShow extends Component {
     });
   };
   render() {
-    let img = <Spinner />;
+    let img;
     if (this.state.slides) {
       img = (
         <img src={this.state.slides[this.state.slideNumber]} alt="IMAGEN" />

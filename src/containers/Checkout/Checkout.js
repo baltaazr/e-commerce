@@ -85,9 +85,9 @@ class Checkout extends Component {
     return (
       <React.Fragment>
         <div className="col span_2_of_3">
-          <h1>Finalizar Compar</h1>
+          <h1>Finalize Payment</h1>
           <hr />
-          <h3>1. Dirección de envío</h3>
+          <h3>1. Address</h3>
           <Input
             value={this.state.addressInput}
             changed={event =>
@@ -95,7 +95,7 @@ class Checkout extends Component {
             }
           />
           <hr />
-          <h3>2. Método de pago</h3>
+          <h3>2. Payment Method</h3>
           <FormControl component="fieldset">
             <RadioGroup
               name="paymentMethod"
@@ -103,25 +103,25 @@ class Checkout extends Component {
               onChange={this.handlePaymentMethodChange}
             >
               <FormControlLabel
-                value="Por Adelantado"
+                value="In Advance"
                 control={<Radio color="primary" />}
-                label="Por Adelantado"
+                label="In Advance"
               />
               <FormControlLabel
-                value="En Persona"
+                value="In Person"
                 control={<Radio color="primary" />}
-                label="En Persona"
+                label="In Person"
               />
             </RadioGroup>
           </FormControl>
           <hr />
-          <h3>3. Revisar los artículos</h3>
+          <h3>3. Check Items</h3>
           {items}
         </div>
         <div className="col span_1_of_3">
           <Box>
-            <Button clicked={this.placeOrderHandler}>Finalizar pedido</Button>
-            <h1>Total del Pedido: {this.getTotalPrice()}$</h1>
+            <Button clicked={this.placeOrderHandler}>Finalize Order</Button>
+            <h1>Total Price of Order: {this.getTotalPrice()}$</h1>
           </Box>
         </div>
       </React.Fragment>
@@ -141,7 +141,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

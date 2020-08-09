@@ -20,18 +20,18 @@ const order = props => {
     );
   });
   var monthNames = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre"
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
   ];
 
   let dateObject = new Date(props.date);
@@ -45,10 +45,10 @@ const order = props => {
 
   return (
     <div className={classes.Order}>
-      <p>Artículos: {itemsOutput}</p>
-      <p>Fecha de compra: {date}</p>
-      <p>Dirección: {props.address}</p>
-      <p>Método de pago: {props.paymentMethod}</p>
+      <p>Items: {itemsOutput}</p>
+      <p>Date of purchase: {date}</p>
+      <p>Address: {props.address}</p>
+      <p>Method of Payment: {props.paymentMethod}</p>
       <p>
         Price: <strong>${Number.parseFloat(props.price).toFixed(2)}</strong>
       </p>

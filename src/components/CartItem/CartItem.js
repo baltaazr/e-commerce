@@ -9,11 +9,12 @@ const cartItem = props => {
   return (
     <div className={classes.CartItem}>
       {props.item.name +
-        " x" +
+        " (" +
         props.item.quantity +
-        ", Precio: " +
+        ")" +
+        ", Price: " +
         props.item.price}
-      {props.remove ? <Button clicked={props.remove}>Remover</Button> : null}
+      {props.remove ? <Button clicked={props.remove}>Remove</Button> : null}
       {props.add ? (
         <Button clicked={props.add}>
           <FaPlus />

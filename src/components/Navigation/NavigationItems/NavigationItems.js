@@ -4,30 +4,30 @@ import classes from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
 import { FaShoppingCart } from "react-icons/fa";
 
-const navigationItems = props => (
+const navigationItems = (props) => (
   <ul className={classes.NavigationItems}>
     {props.isAuth ? (
       <React.Fragment>
         <NavigationItem
           subItems={[
             // { label: "Tu Cuenta", link: "/user-account" },
-            { label: "Tus Pedidos", link: "/orders" },
-            { label: "Cerrar Sesión", link: "/logout" }
+            { label: "Your Orders", link: "/orders" },
+            { label: "Logout", link: "/logout" },
           ]}
           link="/user-account"
         >
-          {"Hola " + props.isAuth.name}
+          {"Hello " + props.isAuth.name}
         </NavigationItem>
-        <NavigationItem link="orders">Pedidos</NavigationItem>
+        <NavigationItem link="orders">Orders</NavigationItem>
         <NavigationItem link="cart" big>
           <FaShoppingCart />
         </NavigationItem>
       </React.Fragment>
     ) : (
-      <NavigationItem link="/auth">Iniciar Sesion</NavigationItem>
+      <NavigationItem link="/auth">Log In</NavigationItem>
     )}
-    <NavigationItem link="/" exact>
-      Inicio
+    <NavigationItem link="/e-commerce" exact>
+      Home
     </NavigationItem>
   </ul>
 );

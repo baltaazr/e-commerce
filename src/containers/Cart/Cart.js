@@ -104,7 +104,7 @@ class Cart extends Component {
       return (
         <React.Fragment>
           <div className="col span_2_of_3">
-            <h1>Carrito</h1>
+            <h1>Cart</h1>
             {cartItems}
           </div>
           <div className="col span_1_of_3">
@@ -115,7 +115,7 @@ class Cart extends Component {
                   this.props.history.push("/checkout");
                 }}
               >
-                Proceder al pago
+                Proceed to Payment
               </Button>
             </Box>
           </div>
@@ -124,8 +124,8 @@ class Cart extends Component {
     } else {
       return (
         <div className="col span_2_of_3">
-          <h1>Carrito</h1>
-          <h4>Tu carrito de compras está vacío.</h4>
+          <h1>Cart</h1>
+          <h4>Your cart is empty.</h4>
         </div>
       );
     }
@@ -142,7 +142,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

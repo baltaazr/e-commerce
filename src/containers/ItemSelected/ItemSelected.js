@@ -62,22 +62,18 @@ class ItemSelected extends Component {
             <p>{this.state.data.description}</p>
           </div>
           <div className={"col span_1_of_3"}>
-            {this.props.loading ? (
-              <Spinner />
-            ) : (
-                <Box>
-                  <h1>${this.state.data.price}</h1>
-                  {this.props.isAuth ? (
-                    <Button
-                      clicked={() => {
-                        this.props.addCartItem(this.state.id);
-                      }}
-                    >
-                      <FaCartPlus /> Agregar al Carrito
-                  </Button>
-                  ) : null}
-                </Box>
-              )}
+            <Box>
+              <h1>${this.state.data.price}</h1>
+              {this.props.isAuth ? (
+                <Button
+                  clicked={() => {
+                    this.props.addCartItem(this.state.id);
+                  }}
+                >
+                  <FaCartPlus /> Add to your Cart
+                </Button>
+              ) : null}
+            </Box>
           </div>
         </div>
       );
@@ -101,7 +97,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ItemSelected);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemSelected);

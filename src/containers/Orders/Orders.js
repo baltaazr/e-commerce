@@ -28,14 +28,14 @@ class Orders extends Component {
     if (!this.props.loading && this.props.orders.length === 0) {
       return (
         <div className="col">
-          <h1>Pedidos</h1>
-          <h4>No tienes ningun pedido.</h4>
+          <h1>Orders</h1>
+          <h4>You don't have any orders.</h4>
         </div>
       );
     } else {
       return (
         <div className="col">
-          <h1>Pedidos</h1>
+          <h1>Orders</h1>
           {orders}
         </div>
       );
@@ -56,7 +56,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Orders);
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);
